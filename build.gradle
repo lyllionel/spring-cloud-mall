@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+}
+
+group 'com.lionel.mall'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+// 指定下载的仓库地址
+repositories {
+    maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+    jcenter()
+    mavenCentral()
+}
+
+
+// 应用于所有依赖的子项目
+subprojects {
+    // 应用插件
+    apply plugin: "java"
+
+    /*
+    * 为所有模块指定公共的依赖
+    * 注意这里有些默认不用再指定版本了，已经由上面的dependencyManagement管理了
+    * */
+    dependencies {
+        implementation group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: '2.4.5'
+        implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.4.5'
+        implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
+        implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-discovery', version: '2021.1'
+        implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-config', version: '2021.1'
+    }
+
+    // 指定要运行测试的包
+    test {
+        useJUnitPlatform()
+    }
+
+}

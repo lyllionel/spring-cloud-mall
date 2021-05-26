@@ -1,0 +1,5 @@
+rootProject.name = 'spring-cloud-mall'
+
+include 'spring-cloud-mall-user'
+include 'spring-cloud-mall-order'
+include 'spring-cloud-mall-gateway'
