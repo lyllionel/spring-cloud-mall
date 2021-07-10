@@ -1,34 +1,20 @@
 plugins {
-    id 'org.springframework.boot' version '2.4.5'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
 }
 
-group = 'com.lionel.mall.gateway'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+group 'com.lionel.mall.gateway'
+version '1.0'
+
+sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
-    repositories { maven{ url'http://maven.aliyun.com/nexus/content/groups/public/'} }
-}
-
-ext {
-    springCloudVersion = '2020.0.2'
-    springBootVersion = '2.4.5'
 }
 
 dependencies {
-    implementation "org.springframework.cloud:spring-cloud-starter-gateway:3.0.2"
+    // https://mvnrepository.com/artifact/com.alibaba.cloud/spring-cloud-starter-alibaba-nacos-discovery
+    implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-discovery', version: '2.2.5.RELEASE'
+    // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-gateway
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-gateway', version: '2.2.7.RELEASE'
     implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
-    implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-discovery', version: '2021.1'
-    implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-config', version: '2021.1'
-}
-
-dependencyManagement {
-
-}
-
-test {
-    useJUnitPlatform()
 }

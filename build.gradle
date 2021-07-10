@@ -1,39 +1,67 @@
-plugins {
-    id 'java'
-}
-
 group 'com.lionel.mall'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
+apply plugin: 'java'
 
-// 指定下载的仓库地址
-repositories {
-    maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
-    jcenter()
-    mavenCentral()
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+buildscript {
+    ext {
+        springBootVersion = '2.2.0.RELEASE'
+        springCloudVersion = 'Hoxton.SR10'
+    }
+    repositories {
+        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
 }
 
+allprojects {
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+    repositories {
+        mavenLocal()
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        mavenCentral()
+    }
+}
 
 // 应用于所有依赖的子项目
 subprojects {
-    // 应用插件
-    apply plugin: "java"
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'org.springframework.boot'
+    // Gradle插件，提供类似Maven的依赖关系管理功能
+    apply plugin: 'io.spring.dependency-management'
 
     /*
     * 为所有模块指定公共的依赖
     * 注意这里有些默认不用再指定版本了，已经由上面的dependencyManagement管理了
     * */
     dependencies {
-        implementation group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: '2.4.5'
-        implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.4.5'
         implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
         implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-discovery', version: '2021.1'
         implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-config', version: '2021.1'
     }
 
-    // 指定要运行测试的包
-    test {
-        useJUnitPlatform()
+    dependencyManagement {
+        imports {
+            // spring bom帮助我们在不指定版本号的情况下声明依赖项。
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+    }
+
+    bootJar {
+        enabled = false
+    }
+
+    jar {
+        manifest.attributes provider: 'gradle'
     }
 
 }
