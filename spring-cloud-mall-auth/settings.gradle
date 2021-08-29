@@ -1,0 +1,3 @@
+rootProject.name = 'spring-cloud-mall-auth'
+include 'spring-cloud-mall-common'
+project(':spring-cloud-mall-common').projectDir = file('../spring-cloud-mall-common')

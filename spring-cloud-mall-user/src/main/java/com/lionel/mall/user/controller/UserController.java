@@ -1,8 +1,10 @@
 package com.lionel.mall.user.controller;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
+@Api(tags = "用户管理")
 @RestController
 @RequestMapping("/user")
 public class UserController {

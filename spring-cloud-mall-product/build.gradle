@@ -1,0 +1,35 @@
+plugins {
+	id 'java'
+}
+
+group 'com.lionel.mall.product'
+version '1.0'
+
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+sourceSets {
+	main.java.srcDirs = ['src/main/java']
+}
+
+jar {
+	manifest {
+		attributes 'Main-Class': 'com.lionel.mall.product.MallProductApplication'
+	}
+}
+
+dependencies {
+	implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
+	// https://mvnrepository.com/artifact/com.alibaba.cloud/spring-cloud-starter-alibaba-nacos-discovery
+	implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-discovery', version: '2.2.5.RELEASE'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.3.8.RELEASE'
+	implementation group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
+
+	implementation project(':spring-cloud-mall-common')
+//	compile(project(":spring-cloud-mall-com.lionel.mall.common"))
+}
+
+

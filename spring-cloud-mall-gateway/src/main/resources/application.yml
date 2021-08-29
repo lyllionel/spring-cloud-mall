@@ -26,6 +26,12 @@ spring:
             - Path=/user/**
           filters:
             - StripPrefix=1  # 转发过滤前缀个数
+        - id: product
+          uri: http://localhost:8083/product
+          predicates:
+            - Path=/product/**
+          filters:
+            - StripPrefix=1  # 转发过滤前缀个数
       enabled: true
       loadbalancer:
         use404: true

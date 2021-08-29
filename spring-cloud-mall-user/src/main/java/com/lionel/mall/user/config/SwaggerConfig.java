@@ -31,7 +31,7 @@ public class SwaggerConfig {
                 .title("会员服务")
                 .description("会员服务接口")
                 .termsOfServiceUrl("http://localhost:8082/user/swagger-ui.html")
-                .contact(new Contact("Ray。", "http://www.ruiyeclub.cn", "ruiyeclub@foxmail.com"))
+                .contact(new Contact("lionel", "https://github.com/lyllionel", "614976970@qq.com"))
                 .version("1.0")
                 .build();
     }

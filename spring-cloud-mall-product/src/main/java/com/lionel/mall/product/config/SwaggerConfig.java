@@ -1,4 +1,4 @@
-package com.lionel.mall.order.config;
+package com.lionel.mall.product.config;
 
 import io.swagger.annotations.ApiOperation;
 import org.springframework.context.annotation.Bean;

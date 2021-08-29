@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+}
+
+group 'com.lionel.mall.auth'
+version '0.0.1-SNAPSHOT'
+
+sourceCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main.java.srcDirs = ['src/main/java']
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.lionel.mall.product.MallAuthApplication'
+    }
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-oauth2
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-oauth2', version: '2.2.5.RELEASE'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.3.8.RELEASE'
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.3.8.RELEASE'
+    // https://mvnrepository.com/artifact/com.nimbusds/nimbus-jose-jwt
+    implementation group: 'com.nimbusds', name: 'nimbus-jose-jwt', version: '9.10'
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-redis
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis', version: '2.3.8.RELEASE'
+    implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-discovery', version: '2.2.5.RELEASE'
+
+//    compile(project(":spring-cloud-mall-common"))
+    implementation project(':spring-cloud-mall-common')
+}

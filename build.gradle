@@ -45,8 +45,11 @@ subprojects {
     * */
     dependencies {
         implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
-        implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-discovery', version: '2021.1'
-        implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-config', version: '2021.1'
+        // https://mvnrepository.com/artifact/com.alibaba.cloud/spring-cloud-starter-alibaba-nacos-discovery
+        implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-discovery', version: '2.2.5.RELEASE'
+        implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-config', version: '2.2.5.RELEASE'
+        implementation group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
+        implementation 'com.alibaba:fastjson:1.2.76'
     }
 
     dependencyManagement {

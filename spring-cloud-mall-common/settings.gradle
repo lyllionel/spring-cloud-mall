@@ -1,0 +1,2 @@
+rootProject.name = 'spring-cloud-mall-common'
+includeFlat 'spring-cloud-mall-common'
