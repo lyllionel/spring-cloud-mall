@@ -9,10 +9,10 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class SpringCloudMallGatewayApplication {
+public class MallGatewayApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringCloudMallGatewayApplication.class, args);
+        SpringApplication.run(MallGatewayApplication.class, args);
     }
 
     @LoadBalanced
